@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: nodejs-app-prom
+    release: prometheus
+  name: nodejs-app-prom
+spec:
+  endpoints:
+  - port: http
+  jobLabel: nodejs-app-prom
+  selector:
+    matchLabels:
+      app: nodejs-app-prom
