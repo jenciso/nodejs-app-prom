@@ -17,7 +17,7 @@ app.get('/fakeDelay', function(req,res){
     let ms = req.query.t;
     ms = (ms>5000 || isNaN(ms)) ? 1000 : parseInt(ms);
     setTimeout((()=> res.status(200).send({delay:ms})), ms);
-})
+});
 app.get('/hello', (req, res) => {
  const { name = 'you' } = req.query;
  res.json({ message: `Hello, ${name}!` });
@@ -28,7 +28,19 @@ app.get('/hi', (req, res) => {
  res.json({ message: `Hi, ${name}!` });
  console.log('GET /hi');
 });
-
+app.get('/upload', function(req,res){
+    let ms = req.query.ms;
+    let code = req.query.code;
+    if(isNaN(ms)){
+        ms = 0
+    }
+    if(isNaN(code)){
+        code = 200
+    }
+    ms = (ms<10 || ms>60000) ? 0 : parseInt(ms);
+    code = (code<200 || code>599) ? 200 : parseInt(code);
+    setTimeout((()=> res.status(code).send({delay:ms})), ms);
+});
 
 app.listen(PORT, () => {
  console.log(`App listening at http://0.0.0.0:${PORT}`);
