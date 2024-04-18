@@ -11,6 +11,7 @@ app.use(promMid({
 
 app.get('/', (req, res) => {
  console.log('GET /');
+ res.send("");
 });
 app.get('/fakeDelay', function(req,res){
     let ms = req.query.t;
@@ -30,7 +31,7 @@ app.get('/hi', (req, res) => {
 
 
 app.listen(PORT, () => {
- console.log(`App listening at <http://localhost>:${PORT}`);
+ console.log(`App listening at http://0.0.0.0:${PORT}`);
 });
 
 process.on('SIGINT', function() {
