@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: nodejs-app-prom
   name: nodejs-app-prom
@@ -10,15 +9,11 @@ spec:
   selector:
     matchLabels:
       app: nodejs-app-prom
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: nodejs-app-prom
     spec:
       containers:
       - image: jenciso/nodejs-app-prom:0.1.0
         name: nodejs-app-prom
-        resources: {}
-status: {}
