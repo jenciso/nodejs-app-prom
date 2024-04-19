@@ -1,0 +1,15 @@
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  name: nodejs-app-prom-upload-performance
+spec:
+  description: We want our demo to be fast and therefore we want 90% of our responses
+    to be faster than 50ms as seen by this app
+  indicator:
+    latency:
+      success:
+        metric: http_request_duration_seconds_bucket{job="nodejs-app-prom",route="/upload",status!~"5..",le="0.05"}
+      total:
+        metric: http_request_duration_seconds_count{job="nodejs-app-prom",route="/upload",status!~"5.."}
+  target: "90"
+  window: 2w

@@ -1,0 +1,15 @@
+apiVersion: pyrra.dev/v1alpha1
+kind: ServiceLevelObjective
+metadata:
+  name: nodejs-app-prom-upload-availability
+spec:
+  description: We expect NodeApp to answer at least 99% successfully.
+  indicator:
+    ratio:
+      errors:
+        metric: http_request_duration_seconds_count{job="nodejs-app-prom",route="/upload",status=~"5.."}
+      grouping: null
+      total:
+        metric: http_request_duration_seconds_count{job="nodejs-app-prom",route="/upload"}
+  target: "99"
+  window: 2w

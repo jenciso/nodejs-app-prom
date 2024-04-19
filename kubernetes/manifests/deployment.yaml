@@ -15,5 +15,5 @@ spec:
         app: nodejs-app-prom
     spec:
       containers:
-      - image: jenciso/nodejs-app-prom:0.1.0
+      - image: jenciso/nodejs-app-prom:latest
         name: nodejs-app-prom
